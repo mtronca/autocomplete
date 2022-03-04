@@ -1,0 +1,16 @@
+.Container {
+  margin: auto;
+  max-width: 1270px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.Container h1 {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .5vw;
+  font-size: 2.5vw;
+}

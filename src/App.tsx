@@ -1,9 +1,13 @@
 
 import './global.css';
 
+import Container from "./components/Container/Container";
+
 const App = () => {
 	return (
-		<h1>Autocomplete</h1>
+		<Container>
+			<h1>Autocomplete</h1>
+		</Container>
 	)
 };
 
