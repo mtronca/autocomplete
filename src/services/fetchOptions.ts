@@ -1,11 +1,11 @@
 const fetchOptions = async (value: string, limit = 5) => {
   const arrayLimit = limit;
 
-  const url = `https://hotels4.p.rapidapi.com/locations/v2/search?query=${value}&local=en_US&currency=USD`;
+  const url = `https://spott.p.rapidapi.com/places/autocomplete?q=${value}&type=CITY&country=US&skip=0&limit=${limit}`;
   const options = {
     "method": "GET",
     "headers": {
-      "x-rapidapi-host": "hotels4.p.rapidapi.com",
+      "x-rapidapi-host": "spott.p.rapidapi.com",
       "x-rapidapi-key": "gXDfR45LI6msh7UbwzoT87tAuZcRp1K7YyijsnJTlAsVKxcjdv"
     }
   };
@@ -14,9 +14,8 @@ const fetchOptions = async (value: string, limit = 5) => {
   .then((response: any) => {
     return response.json();
   })
-  .then(data => {
-    const cities = data?.suggestions.find(s => s.group === 'CITY_GROUP')?.entities || [];
-    const filteredArr = cities.map((item: Record<string, string>) => item.name).slice(0, arrayLimit) || [];
+  .then(function(data) {
+    const filteredArr = data?.map((item: Record<string, string>) => item.name) || [];
     return filteredArr;
   })
   .catch(err => {

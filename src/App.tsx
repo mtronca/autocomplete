@@ -7,7 +7,7 @@ import AutocompleteInput from './components/AutocompleteInput/AutocompleteInput'
 const App = () => {
 	return (
 		<Container>
-			<h1>Autocomplete</h1>
+			<h1>City Autocomplete</h1>
 			<AutocompleteInput/>
 		</Container>
 	)
