@@ -1,0 +1,50 @@
+.AutocompleteInput {
+  position: relative;
+  padding-top: 30px;
+}
+
+.AutocompleteInput input {
+  border: 2px solid #ccc;
+  border-radius: .4em;
+  height: 4em;
+  font-size: 15px;
+  padding: 0 .8em;
+  width: 100%;
+  max-width: 250px;
+  outline: none;
+  transition: .3s;
+  position: relative;
+  z-index: 1;
+}
+
+.AutocompleteInput input:focus {
+  border-color: #222;
+}
+
+.dropdown {
+  position: absolute;
+  bottom: 2px;
+  width: 100%;
+  transform: translateY(100%);
+  border: 2px solid #ccc;
+  border-radius: .4em;
+  font-size: 15px;
+  width: 100%;
+  max-width: 250px;
+  outline: none;
+  transition: .3s;
+}
+
+.dropdown .option {
+  padding: .6em .8em;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.dropdown .option:hover {
+  background: #eee;
+}
+
+.dropdown:empty{
+  display: none;
+}
