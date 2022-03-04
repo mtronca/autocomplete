@@ -4,10 +4,10 @@ import './styles.css'
 interface IOption {
 	onClick: Function;
 	search: string;
-  children: string;
+  	children: string;
 }
 
-const Dropdown = ({ onClick, search, children }: IOption) => {
+const Option = ({ onClick, search, children }: IOption) => {
 	const [text, setText] = useState(children);
 
 	useEffect(() => {
@@ -17,12 +17,11 @@ const Dropdown = ({ onClick, search, children }: IOption) => {
 	}, [search]);
 
 	return (
-		<div
-			className="option"
+		<div className="option"
 			onClick={() => onClick({ target: { value: children }}, true)}
 			dangerouslySetInnerHTML={{ __html: text }}
 		/>
 	)
 };
 
-export default Dropdown;
+export default Option;

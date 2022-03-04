@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import fetchOptions from '../../services/fetchOptions';
-import Option from './Option'
+import Dropdown from '../Dropdown/Dropdown';
 import './styles.css'
 
 const AutocompleteInput = () => {
@@ -39,9 +39,7 @@ const AutocompleteInput = () => {
         value={inputValue}
         onChange={handleChange}
       />
-      <div className="dropdown">
-        {list.map((item: string) => <Option search={inputValue} onClick={handleChange} key={item}>{item}</Option>)}
-      </div>
+      <Dropdown search={inputValue} options={options} handleChange={handleChange}/>
 		</div>
 	)
 };
