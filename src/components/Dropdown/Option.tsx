@@ -18,7 +18,7 @@ const Option = ({ onClick, search, children }: IOption) => {
 
 	return (
 		<div className="option"
-			onClick={() => onClick({ target: { value: children }}, true)}
+			onClick={() => onClick(children)}
 			dangerouslySetInnerHTML={{ __html: text }}
 		/>
 	)

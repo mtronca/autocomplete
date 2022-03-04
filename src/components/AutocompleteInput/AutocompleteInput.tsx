@@ -7,6 +7,7 @@ import './styles.css'
 
 const AutocompleteInput = () => {
   const [inputValue, setInputValue] = useState<string>('');
+  const [displayValue, setDisplayValue] = useState<string>('');
   const [options, setOptions] = useState<string[]>([]);
 
   const debouncedValue = useDebounce(inputValue, 300);
@@ -15,6 +16,11 @@ const AutocompleteInput = () => {
     const { value } = event.target || {};
     setInputValue(value);
   };
+
+  const handleClick = (value: string) => {
+    setDisplayValue(value);
+    setOptions([]);
+  }
 
   useEffect(() => {
     async function handleOptions () {
@@ -29,16 +35,19 @@ const AutocompleteInput = () => {
     handleOptions();
   }, [debouncedValue])
 
+  useEffect(() => {
+    setDisplayValue(inputValue);
+  }, [inputValue])
 
 	return (
 		<div className="AutocompleteInput">
 			<input
         type="text"
         placeholder="Search for a city"
-        value={inputValue}
+        value={displayValue}
         onChange={handleChange}
       />
-      <Dropdown search={inputValue} options={options} handleChange={handleChange} />
+      <Dropdown search={inputValue} options={options} handleChange={handleClick} />
 		</div>
 	)
 };
