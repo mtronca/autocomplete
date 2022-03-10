@@ -6,19 +6,19 @@ import { useDebounce } from '../../hooks/useDebounce';
 import './styles.css'
 
 const AutocompleteInput = () => {
+  const [searchTerm, setSearchTerm] = useState<string>('');
   const [inputValue, setInputValue] = useState<string>('');
-  const [displayValue, setDisplayValue] = useState<string>('');
   const [options, setOptions] = useState<string[]>([]);
 
-  const debouncedValue = useDebounce(inputValue, 300);
+  const debouncedValue = useDebounce(searchTerm, 300);
 
   const handleChange = async (event: ChangeEvent<{ value: string }>) => {
     const { value } = event.target || {};
-    setInputValue(value);
+    setSearchTerm(value);
   };
 
   const handleClick = (value: string) => {
-    setDisplayValue(value);
+    setInputValue(value);
     setOptions([]);
   }
 
@@ -36,18 +36,18 @@ const AutocompleteInput = () => {
   }, [debouncedValue])
 
   useEffect(() => {
-    setDisplayValue(inputValue);
-  }, [inputValue])
+    setInputValue(searchTerm);
+  }, [searchTerm])
 
 	return (
 		<div className="AutocompleteInput">
 			<input
         type="text"
         placeholder="Search for a city"
-        value={displayValue}
+        value={inputValue}
         onChange={handleChange}
       />
-      <Dropdown search={inputValue} options={options} handleChange={handleClick} />
+      <Dropdown search={searchTerm} options={options} handleChange={handleClick} />
 		</div>
 	)
 };
